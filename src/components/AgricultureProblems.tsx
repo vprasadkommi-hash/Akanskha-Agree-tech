@@ -1,0 +1,263 @@
+import { useCallback, useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { Box, Typography, Stack, useTheme, useMediaQuery } from "@mui/material"
+import { RiArrowLeftCircleLine, RiArrowRightCircleLine } from "react-icons/ri"
+import useEmblaCarousel from "embla-carousel-react"
+import type { EmblaCarouselType } from "embla-carousel"
+import "./AgricultureProblems.css"
+import lowPricesImage from "../assets/problems/Low Prices.png"
+import weatherImage from "../assets/problems/Unpredictable Weather.png"
+import equipmentImage from "../assets/problems/Expensive Equipment.png"
+import educationImage from "../assets/problems/Limited Education.png"
+import creditImage from "../assets/problems/No Credit Access.png"
+import pestsImage from "../assets/problems/Pest & Diseases.png"
+import exploitationImage from "../assets/problems/Market Exploitation.png"
+import soilImage from "../assets/problems/Soil Degradation.png"
+import waterImage from "../assets/problems/Water Scarcity - Drought.png"
+import laborImage from "../assets/problems/Labour Shortage.png"
+import techImage from "../assets/problems/No Tech Access.png"
+import storageImage from "../assets/problems/Storage Issues.png"
+import regulationsImage from "../assets/problems/Complex Regulations.png"
+import scaleImage from "../assets/problems/Limited Scale.png"
+
+const problems = [
+  { icon: "📉", labelKey: "problems.lowPrices", image: lowPricesImage },
+  { icon: "⛈️", labelKey: "problems.weather", image: weatherImage },
+  { icon: "🚜", labelKey: "problems.equipment", image: equipmentImage },
+  { icon: "📚", labelKey: "problems.education", image: educationImage },
+  { icon: "🏦", labelKey: "problems.credit", image: creditImage },
+  { icon: "🐛", labelKey: "problems.pests", image: pestsImage },
+  { icon: "🤝", labelKey: "problems.exploitation", image: exploitationImage },
+  { icon: "🌍", labelKey: "problems.soil", image: soilImage },
+  { icon: "💧", labelKey: "problems.water", image: waterImage },
+  { icon: "👨‍🌾", labelKey: "problems.labor", image: laborImage },
+  { icon: "📱", labelKey: "problems.tech", image: techImage },
+  { icon: "🏚️", labelKey: "problems.storage", image: storageImage },
+  { icon: "📋", labelKey: "problems.regulations", image: regulationsImage },
+  { icon: "📐", labelKey: "problems.scale", image: scaleImage },
+]
+
+export default function AgricultureProblems() {
+  const { t, i18n } = useTranslation()
+  const isTe = i18n.language === "te"
+
+  return (
+    <Box id="problems" sx={{ position: "relative", overflow: "hidden", bgcolor: "#0a180e", py: { xs: 8, md: 11 }, px: { xs: 2.5, sm: 4, md: 6 } }}>
+      <Box sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "radial-gradient(ellipse at 20% 0%, rgba(34, 197, 94, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(184, 243, 92, 0.05) 0%, transparent 50%)", pointerEvents: "none" }} />
+      <Box sx={{ position: "relative", zIndex: 1, maxWidth: 1360, mx: "auto" }}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 2.5, md: 6 }}
+          sx={{
+            alignItems: { xs: "flex-start", md: "flex-end" },
+            justifyContent: "space-between",
+            mb: { xs: 4.5, md: 6 },
+          }}
+        >
+          <Box sx={{ maxWidth: 640 }}>
+            <Box
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 1,
+                px: 1.6,
+                py: 0.5,
+                borderRadius: "999px",
+                bgcolor: "rgba(148, 212, 75, 0.1)",
+                border: "1px solid rgba(148, 212, 75, 0.25)",
+                color: "#9cdb50",
+                mb: 2,
+              }}
+            >
+              <Box sx={{ width: 6, height: 6, borderRadius: "50%", bgcolor: "#9cdb50" }} />
+              <Typography sx={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                {t("problems.kicker")}
+              </Typography>
+            </Box>
+
+            <Typography
+              component="h2"
+              sx={{
+                color: "#ffffff",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: { xs: "2rem", sm: "2.6rem", md: "3.2rem" },
+                fontWeight: 700,
+                lineHeight: 1.12,
+                letterSpacing: "-0.025em",
+              }}
+            >
+              {isTe ? "భారతీయ వ్యవసాయ వాస్తవికత" : "The Reality of"}{" "}
+              <Box
+                component="span"
+                className="font-serif-italic"
+                sx={{
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  fontSize: { xs: "2.4rem", sm: "3.1rem", md: "3.8rem" },
+                  color: "#d4edb2",
+                  display: { xs: "inline", sm: "inline-block" },
+                }}
+              >
+                {isTe ? "మరియు రైతుల సవాళ్లు" : "Indian Agriculture"}
+              </Box>
+            </Typography>
+          </Box>
+
+          <Typography
+            sx={{
+              color: "rgba(255, 255, 255, 0.72)",
+              fontSize: { xs: "0.88rem", sm: "0.96rem" },
+              lineHeight: 1.65,
+              maxWidth: 460,
+              pb: { md: 0.5 },
+            }}
+          >
+            {t("problems.subtitle")}
+          </Typography>
+        </Stack>
+
+        <ProblemCarousel />
+      </Box>
+    </Box>
+  )
+}
+
+const TWEEN_FACTOR_BASE = 0.03
+
+function ProblemCarousel() {
+  const { t } = useTranslation()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "lg"))
+  const slidesPerView = isMobile ? 1 : isTablet ? 2 : 5
+  const slideWidth = `${100 / slidesPerView}%`
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const tweenFactor = useRef(0)
+  const tweenNodes = useRef<HTMLElement[]>([])
+
+  const setTweenNodes = useCallback((api: EmblaCarouselType): void => {
+    tweenNodes.current = api.slideNodes().map((slideNode) => {
+      return slideNode.querySelector(".ag-problems__parallax__layer") as HTMLElement
+    })
+  }, [])
+
+  const setTweenFactor = useCallback((api: EmblaCarouselType) => {
+    tweenFactor.current = TWEEN_FACTOR_BASE * api.scrollSnapList().length
+  }, [])
+
+  const tweenParallax = useCallback((api: EmblaCarouselType) => {
+    const engine = api.internalEngine()
+    const scrollProgress = api.scrollProgress()
+    const slidesInView = api.slidesInView()
+
+    api.scrollSnapList().forEach((scrollSnap, slideIndex) => {
+      if (!slidesInView.includes(slideIndex)) return
+
+      let diffToTarget = scrollSnap - scrollProgress
+
+      if (engine.options.loop) {
+        engine.slideLooper.loopPoints.forEach((loopItem) => {
+          const target = loopItem.target()
+
+          if (slideIndex === loopItem.index && target !== 0) {
+            const sign = Math.sign(target)
+
+            if (sign === -1) {
+              diffToTarget = scrollSnap - (1 + scrollProgress)
+            }
+            if (sign === 1) {
+              diffToTarget = scrollSnap + (1 - scrollProgress)
+            }
+          }
+        })
+      }
+
+      const translate = diffToTarget * (-1 * tweenFactor.current) * 100
+      const tweenNode = tweenNodes.current[slideIndex]
+      if (tweenNode) {
+        tweenNode.style.transform = `translateX(${translate}%)`
+      }
+    })
+  }, [])
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    setTweenNodes(emblaApi)
+    setTweenFactor(emblaApi)
+    tweenParallax(emblaApi)
+
+    emblaApi
+      .on("reInit", setTweenNodes)
+      .on("reInit", setTweenFactor)
+      .on("reInit", tweenParallax)
+      .on("scroll", tweenParallax)
+      .on("select", onSelect)
+      .on("slideFocus", tweenParallax)
+
+    return () => {
+      emblaApi
+        .off("reInit", setTweenNodes)
+        .off("reInit", setTweenFactor)
+        .off("reInit", tweenParallax)
+        .off("scroll", tweenParallax)
+        .off("select", onSelect)
+        .off("slideFocus", tweenParallax)
+    }
+  }, [emblaApi, onSelect, setTweenFactor, setTweenNodes, tweenParallax])
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
+
+  return (
+    <Box sx={{ position: "relative" }}>
+      <CarouselButton direction="left" onClick={scrollPrev} />
+      <Box className="ag-problems__viewport" sx={{ overflow: "hidden" }} ref={emblaRef}>
+        <Box className="ag-problems__container" sx={{ display: "flex" }}>
+          {problems.map((problem) => (
+            <Box className="ag-problems__slide" key={problem.labelKey} sx={{ flex: `0 0 ${slideWidth}`, minWidth: 0, px: { xs: 0.75, md: 1 }, "--slide-spacing": { xs: "6px", md: "8px" } }}>
+              <ProblemCard problem={problem} t={t} />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+      <CarouselButton direction="right" onClick={scrollNext} />
+      <Stack spacing={1.5} sx={{ alignItems: "center", mt: { xs: 2.75, md: 3 } }}>
+        <Stack direction="row" spacing={0.45}>{problems.map((problem, index) => <Box key={problem.labelKey} sx={{ width: index === selectedIndex ? 25 : 9, height: 3, borderRadius: 3, bgcolor: index === selectedIndex ? "#91d950" : "rgba(255,255,255,0.22)" }} />)}</Stack>
+        <Typography sx={{ color: "rgba(255,255,255,0.65)", fontSize: "0.68rem", letterSpacing: "0.06em" }}><Box component="span" sx={{ color: "#91d950", fontWeight: 700 }}>{String(selectedIndex + 1).padStart(2, "0")}</Box> / {String(problems.length).padStart(2, "0")}</Typography>
+        {/* <Stack direction="row" spacing={1} sx={{ alignItems: "center", color: "rgba(255,255,255,0.62)" }}><Box sx={{ width: 13, height: 21, border: "1px solid rgba(255,255,255,0.7)", borderRadius: 6, position: "relative", "&::after": { content: '""', position: "absolute", top: 4, left: "50%", width: 2, height: 5, bgcolor: "rgba(255,255,255,0.75)", borderRadius: 2, transform: "translateX(-50%)" } }} /><Typography sx={{ fontSize: "0.68rem" }}>{t("problems.swipeHint", "Swipe to explore all challenges")}</Typography></Stack> */}
+      </Stack>
+    </Box>
+  )
+}
+
+function ProblemCard({ problem, t }: { problem: (typeof problems)[number]; t: (key: string) => string }) {
+  return (
+    <Box sx={{ position: "relative", height: { xs: 380, sm: 230, md: 300 }, overflow: "hidden", border: "1px solid rgba(255, 123, 0, 0.39)", borderRadius: "18px", bgcolor: "transparent", boxShadow: "0 16px 40px rgba(0,0,0,0.2)", transition: "transform 240ms ease, border-color 240ms ease", "&:hover": { transform: "translateY(0px)", borderColor: "rgba(172,218,133,0.55)" } }}>
+      <Box className="ag-problems__parallax" sx={{ position: "absolute", zIndex: 0, bottom: 0, left: 0, right: 0, overflow: "hidden", height: { xs: 380, sm: 330, md: 350 }, borderRadius: "18px" }}>
+        <Box className="ag-problems__parallax__layer" sx={{ position: "relative", height: "100%", width: "120%", display: "flex", justifyContent: "center" }}>
+          <Box component="img" className="ag-problems__parallax__img" src={problem.image} alt="" sx={{ maxWidth: "none",flex: "0 0 calc(150% + (var(--slide-spacing, 6px) * 3))" , height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(1.05) contrast(1.08) brightness(1.05)", opacity: 1 }} />
+        </Box>
+      </Box>
+      <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.85) 100%)" }} />
+      <Stack sx={{ position: "relative", zIndex: 2, height: "100%", minHeight: { xs: 380, sm: 230, md: 300 }, justifyContent: "space-between", p: { xs: 1.5, sm: 1.8, md: 1 } }}>
+        <Stack direction="row" spacing={1.2} sx={{ alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: 25, height: 25, borderRadius: "10px", bgcolor: "rgba(9, 9, 9, 0.71)", border: "1px solid rgba(0, 0, 0, 0.13)", fontSize: "1rem", backdropFilter: "blur(8px)" }}>{problem.icon}</Box>
+          <Typography sx={{ color: "common.white", fontSize: { xs: "1.5rem", md: "1.2rem" }, fontWeight: 700, textShadow: "0 2px 6px rgba(0,0,0,0.85)" }}>{t(`${problem.labelKey}.title`)}</Typography>
+        </Stack>
+        <Typography sx={{ color: "rgba(255,255,255,0.92)", fontSize: { xs: "0.85rem", md: "0.85rem" }, lineHeight: 1.55, fontWeight: 500, textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>{t(`${problem.labelKey}.desc`)}</Typography>
+      </Stack>
+    </Box>
+  )
+}
+
+function CarouselButton({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) {
+  return <Box component="button" type="button" aria-label={`${direction} challenge`} onClick={onClick} sx={{ position: "absolute", zIndex: 2, top: "50%", [direction]: { xs: 4, md: -32 }, transform: "translateY(-50%)", width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "50%", bgcolor: "rgba(4,15,9,0.55)", color: "white", cursor: "pointer", fontSize: "1.2rem", "&:hover": { bgcolor: "rgba(145,217,80,0.18)", borderColor: "#91d950" } }}>{direction === "left" ? <RiArrowLeftCircleLine /> : <RiArrowRightCircleLine />}</Box>
+}

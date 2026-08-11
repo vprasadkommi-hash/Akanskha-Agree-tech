@@ -1,0 +1,32 @@
+.ag-problems__viewport {
+  overflow: hidden;
+}
+
+.ag-problems__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.ag-problems__slide {
+  transform: translate3d(0, 0, 0);
+  min-width: 0;
+}
+
+.ag-problems__parallax {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ag-problems__parallax__layer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ag-problems__parallax__img {
+  max-width: none;
+  flex: 0 0 calc(115% + (var(--slide-spacing, 16px) * 2));
+  object-fit: cover;
+}
