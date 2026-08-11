@@ -225,19 +225,19 @@ export default function Header() {
               startIcon={<Languages size={14} />}
               onClick={() => i18n.changeLanguage(i18n.language === "te" ? "en" : "te")}
               sx={{
-                px: 1.6,
-                py: 0.75,
+                px: 1.8,
+                py: 0.8,
                 color: "#ffffff",
-                border: "1px solid rgba(255,255,255,0.22)",
+                border: "1px solid rgba(255,255,255,0.45)",
                 borderRadius: "999px",
-                bgcolor: "rgba(255,255,255,0.08)",
-                backdropFilter: "blur(12px)",
-                fontSize: "0.76rem",
+                bgcolor: "rgba(255,255,255,0.14)",
+                backdropFilter: "blur(14px)",
+                fontSize: "0.8rem",
                 fontWeight: 600,
                 textTransform: "none",
                 "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.18)",
-                  borderColor: "rgba(255,255,255,0.45)",
+                  bgcolor: "rgba(255,255,255,0.24)",
+                  borderColor: "rgba(255,255,255,0.7)",
                 },
               }}
             >
