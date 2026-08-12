@@ -341,7 +341,7 @@ export const en = {
     replyTime: "We usually reply within 24 hrs",
     addressTitle: "Registered Address",
     addressLine1: "Akanskha Agree Tech Pvt. Ltd.",
-    addressLine2: "123, Green Avenue, Sector 62, Noida, Uttar Pradesh - 201309, India",
+    addressLine2: "1-155, Dundigam Village, Dagadarthi Mandal, SPSR Nellore, Andhra Pradesh, Pin Code: 524308",
     demoTitle: "Be the First to Experience the Change",
     demoSubtitle:
       "Request a demo and be among the first to explore our farmer development app.",
