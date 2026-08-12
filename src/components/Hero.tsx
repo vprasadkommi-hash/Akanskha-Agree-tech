@@ -3,7 +3,7 @@ import { Box, Typography, Stack, Button } from "@mui/material"
 import ContactDialogButton from "./ContactDialogButton"
 import { ArrowUpRight, ChevronDown, Star } from "lucide-react"
 import wheatBg from "../assets/wheat-hero-bg.jpg"
-import heroVideo from "../assets/farmer-inspecting.mov"
+import heroVideo from "../assets/farm-hero.mp4"
 
 const farmerAvatars = [
   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
