@@ -197,7 +197,20 @@ function CategoryCarousel({ category }: { category: Category }) {
       <Stack direction="row" spacing={1.2} sx={{ alignItems: "center", mb: { xs: 2, md: 2.5 } }}>
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, borderRadius: "10px", bgcolor: "rgba(145,217,80,0.12)", border: "1px solid rgba(145,217,80,0.3)", color: "#ff8800", fontSize: "1.2rem", flexShrink: 0 }}><BiSolidLeaf /></Box>
         <Box>
-          <Typography sx={{ color: "common.white", fontSize: { xs: "1.1rem", md: "1.3rem" }, fontWeight: 800, lineHeight: 1.1 }}>{t(category.labelKey)}</Typography>
+          <Typography
+            sx={{
+              backgroundImage: "linear-gradient(90deg, #ff8400, #7bc24c)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              display: "inline-block",
+              fontSize: { xs: "1.1rem", md: "1.3rem" },
+              fontWeight: 800,
+              lineHeight: 1.1,
+            }}
+          >
+            {t(category.labelKey)}
+          </Typography>
         </Box>
       </Stack>
 
