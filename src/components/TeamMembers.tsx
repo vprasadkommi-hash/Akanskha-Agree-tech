@@ -16,7 +16,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "bhanu-prakash",
     name: "Kapa Bhanu Prakash",
-    role: "Founder & CEO",
+    role: "Entrepreneur,CEO,Director",
     email: "bhanukapa98@gmail.com",
     image: bhanuPrakashImg,
   },
