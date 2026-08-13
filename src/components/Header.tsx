@@ -132,7 +132,7 @@ export default function Header() {
               <Box
                 component="img"
                 src={logo}
-                alt="Akanskha Agree Tech Logo"
+                alt="Akanksha Agree Tech Logo"
                 sx={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </Box>
@@ -147,7 +147,7 @@ export default function Header() {
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                 }}
               >
-                Akanskha Agree Tech
+                Akanksha Agree Tech
               </Typography>
             </Box>
           </Stack>
@@ -304,7 +304,7 @@ export default function Header() {
       >
         <Stack spacing={4} sx={{ height: "100%" }}>
           <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center" }}>
-            <Typography sx={{ fontWeight: 800, fontSize: "1.1rem" }}>Akanskha Agree Tech</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: "1.1rem" }}>Akanksha Agree Tech</Typography>
             <IconButton
               onClick={() => setMobileOpen(false)}
               sx={{

@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "bhanu-prakash",
     name: "Kapa Bhanu Prakash",
-    role: "Founder & CEO",
+    role: " CEO & Director",
     email: "bhanukapa98@gmail.com",
     image: bhanuPrakashImg,
   },
@@ -80,7 +80,7 @@ export default function TeamMembers() {
           >
             Meet the Minds Behind{" "}
             <Box component="span" sx={{ color: "#4ade80" }}>
-              Akanskha Agree Tech
+              Akanksha Agree Tech
             </Box>
           </Typography>
           <Typography
@@ -109,7 +109,8 @@ export default function TeamMembers() {
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   backdropFilter: "blur(12px)",
                   transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
                   "&:hover": {
                     transform: "translateY(-8px)",
                     borderColor: "rgba(74, 222, 128, 0.45)",
@@ -128,8 +129,6 @@ export default function TeamMembers() {
                     background: "linear-gradient(135deg, #4ade80, #16a34a, rgba(255,255,255,0.2))",
                     boxShadow: "0 10px 30px rgba(34, 197, 94, 0.35)",
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                     flexShrink: 0,
                   }}
                 >
@@ -158,6 +157,7 @@ export default function TeamMembers() {
                       fontSize: "1.25rem",
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       letterSpacing: "-0.01em",
+                      textAlign: "center",
                     }}
                   >
                     {member.name}
@@ -177,6 +177,7 @@ export default function TeamMembers() {
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
+                        textAlign: "center",
                       }}
                     >
                       {member.role}
