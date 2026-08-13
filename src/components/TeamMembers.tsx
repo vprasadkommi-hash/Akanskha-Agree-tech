@@ -2,6 +2,7 @@ import { Box, Container, Typography, Stack, Grid, Link } from "@mui/material"
 import { Mail } from "lucide-react"
 import bhanuPrakashImg from "../assets/team/bhanu_prakash.jpg"
 import abhiramImg from "../assets/team/abhiram.jpg"
+import sarathChowdaryImg from "../assets/team/sarath_chowdary.jpg"
 
 export interface TeamMember {
   id: string
@@ -25,6 +26,13 @@ export const teamMembers: TeamMember[] = [
     role: "Managing Director",
     email: "AbhiKapa@gmail.com",
     image: abhiramImg,
+  },
+  {
+    id: "sarath-chowdary",
+    name: "Kapa Sarath Chowdary",
+    role: "HR",
+    email: "sarathkapa@gmail.com",
+    image: sarathChowdaryImg,
   },
 ]
 
@@ -98,7 +106,7 @@ export default function TeamMembers() {
         {/* Members Grid */}
         <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {teamMembers.map((member) => (
-            <Grid key={member.id} size={{ xs: 12, sm: 6, md: 4, lg: 3.5 }}>
+            <Grid key={member.id} size={{ xs: 12, sm: 6, md: 4 }}>
               <Stack
                 alignItems="center"
                 spacing={2.5}
