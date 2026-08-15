@@ -1,5 +1,5 @@
 export const en = {
-  brand: "Akanskha Agree Tech",
+  brand: "Akanksha Agree Tech",
   nav: {
     home: "Home",
     services: "Services",
@@ -43,7 +43,7 @@ export const en = {
   problems: {
     kicker: "Agriculture Problems",
     title: "The Reality of Indian Agriculture",
-    subtitle: "14 major challenges farmers face daily. Akanskha Agree Tech solves them all.",
+    subtitle: "14 major challenges farmers face daily. Akanksha Agree Tech solves them all.",
     lowPrices: { title: "Low Prices", desc: "Limited market access reduces profits" },
     weather: { title: "Unpredictable Weather", desc: "Monsoon failures impact yields" },
     equipment: { title: "Expensive Equipment", desc: "High cost of machinery" },
@@ -80,9 +80,9 @@ export const en = {
     cooperative: { title: "Cooperative formation support", desc: "Unite with fellow farmers for better bargaining power." },
   },
   services: {
-    kicker: "Akanskha Agree Tech Services",
+    kicker: "Akanksha Agree Tech Services",
     title: "Every Service Your Farm Needs",
-    subtitle: "48 on-demand Akanskha Agree Tech services — from drone spraying to dairy shed construction. Book, hire, and get expert help in a few taps.",
+    subtitle: "48 on-demand Akanksha Agree Tech services — from drone spraying to dairy shed construction. Book, hire, and get expert help in a few taps.",
     swipeHint: "Swipe to explore all services",
     categories: {
       landPreparation: "Land Preparation",
@@ -171,7 +171,7 @@ export const en = {
   govtSchemes: {
     badge: "Government Support",
     title: "Government Schemes Made Easy",
-    subtitle: "Akanskha Agree Tech connects you with all available government benefits, subsidies, and schemes. Get eligibility checks and application assistance instantly.",
+    subtitle: "Akanksha Agree Tech connects you with all available government benefits, subsidies, and schemes. Get eligibility checks and application assistance instantly.",
     labels: {
       benefit: "Benefit",
       eligibility: "Eligibility",
@@ -215,7 +215,7 @@ export const en = {
       },
     },
     ctaTitle: "Don't Miss Out on Government Benefits",
-    ctaSubtitle: "Akanskha Agree Tech tracks all schemes, notifies you of new opportunities, and helps you apply in minutes—not hours.",
+    ctaSubtitle: "Akanksha Agree Tech tracks all schemes, notifies you of new opportunities, and helps you apply in minutes—not hours.",
     ctaButton: "Talk to Us to Know More Details",
   },
   vision: {
@@ -225,7 +225,7 @@ export const en = {
       line2: "Country grows.",
     },
     subtitle:
-      "Akanskha Agree Tech exists to make technology, knowledge and opportunity accessible to every farmer, regardless of location or land size.",
+      "Akanksha Agree Tech exists to make technology, knowledge and opportunity accessible to every farmer, regardless of location or land size.",
     quotes: [
       { text: "Empowering farmers with technology and knowledge to build a prosperous India", author: "Founder Vision" },
       { text: "Connecting rural communities to unlimited opportunities and growth", author: "Core Value" },
@@ -329,7 +329,7 @@ export const en = {
     kicker: "Get In Touch",
     title: "Let's Grow Together",
     subtitle:
-      "Akanskha Agree Tech is on the way! Request a demo or get in touch to know more about our upcoming farmer development app.",
+      "Akanksha Agree Tech is on the way! Request a demo or get in touch to know more about our upcoming farmer development app.",
     phoneAlt: "Farmer using mobile app",
     floatingTag: "For Farmers",
     floatingTagLine: "By Innovation",
@@ -337,10 +337,10 @@ export const en = {
     phone: "+91 98765 43210",
     hours: "Mon - Sat | 9:00 AM - 6:00 PM",
     emailUs: "Email Us",
-    email: "hello@akanskhaagretech.com",
+    email: "hello@akankshaagretech.com",
     replyTime: "We usually reply within 24 hrs",
     addressTitle: "Registered Address",
-    addressLine1: "Akanskha Agree Tech Pvt. Ltd.",
+    addressLine1: "Akanksha Agree Tech Pvt. Ltd.",
     addressLine2: "1-155, Dundigam Village, Dagadarthi Mandal, SPSR Nellore, Andhra Pradesh, Pin Code: 524308",
     demoTitle: "Be the First to Experience the Change",
     demoSubtitle:

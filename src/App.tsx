@@ -1,4 +1,4 @@
-// Akanskha Agree Tech Web App
+// Akanksha Agree Tech Web App
 import { ThemeProvider, CssBaseline } from "@mui/material"
 import { Routes, Route } from "react-router-dom"
 import theme from "./theme"
