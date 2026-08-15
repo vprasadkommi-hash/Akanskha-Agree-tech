@@ -358,6 +358,11 @@ export const en = {
     english: "English",
     telugu: "తెలుగు",
   },
+  notFound: {
+    title: "404 - Page Not Found",
+    subtitle: "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+    button: "Back to Home",
+  },
   footer: {
     tagline: "India's trusted digital ecosystem connecting farmers with modern agricultural services.",
     quickLinks: "Quick Links",

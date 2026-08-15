@@ -4,7 +4,7 @@ import ContactDialogButton from "./ContactDialogButton"
 import { useTranslation } from "react-i18next"
 import { resources } from "../i18n"
 import { PiTreeThin, PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi"
-import visionBg from "../assets/visionbg.png"
+import visionBg from "../assets/visionbg.webp"
 
 type Scheme = {
   key: string

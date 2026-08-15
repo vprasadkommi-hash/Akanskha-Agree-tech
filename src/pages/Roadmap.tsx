@@ -1,6 +1,7 @@
 import { useRef, type ComponentType } from "react"
 import { useTranslation } from "react-i18next"
-import { Box, Container, Typography, Button, IconButton } from "@mui/material"
+import { Box, Container, Typography, IconButton } from "@mui/material"
+import ContactDialogButton from "../components/ContactDialogButton"
 import {
   Leaf,
   Landmark,
@@ -22,7 +23,7 @@ import {
   ChevronRight,
   Image,
 } from "lucide-react"
-import visionbg from "../assets/visionbg.png"
+import visionbg from "../assets/visionbg.webp"
 
 type IconComp = ComponentType<{ size?: number; color?: string }>
 
@@ -259,6 +260,7 @@ export default function Roadmap() {
 
         <IconButton
           onClick={() => scroll(-1)}
+          aria-label="Previous card"
           sx={{
             position: "absolute",
             left: { xs: 8, md: 24 },
@@ -275,6 +277,7 @@ export default function Roadmap() {
         </IconButton>
         <IconButton
           onClick={() => scroll(1)}
+          aria-label="Next card"
           sx={{
             position: "absolute",
             right: { xs: 8, md: 24 },
@@ -559,7 +562,7 @@ export default function Roadmap() {
               <Typography sx={{ fontSize: "0.95rem", color: "text.secondary", mb: 3 }}>
                 {t("roadmap.cta.subtitle")}
               </Typography>
-              <Button
+              <ContactDialogButton
                 variant="contained"
                 endIcon={<ChevronRight size={16} />}
                 sx={{
@@ -574,7 +577,7 @@ export default function Roadmap() {
                 }}
               >
                 {t("roadmap.cta.button")}
-              </Button>
+              </ContactDialogButton>
             </Box>
           </Box>
         </Container>

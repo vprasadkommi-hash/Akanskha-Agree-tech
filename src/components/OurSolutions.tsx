@@ -38,7 +38,7 @@ const solutions = [
 ]
 
 export default function OurSolutions() {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
   const isTe = i18n.language === "te"
 
   return (

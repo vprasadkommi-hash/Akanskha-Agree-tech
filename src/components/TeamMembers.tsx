@@ -1,7 +1,9 @@
 import { Box, Container, Typography, Stack, Grid, Link } from "@mui/material"
 import { Mail } from "lucide-react"
 import bhanuPrakashImg from "../assets/team/bhanu_prakash.jpg"
-import abhiramImg from "../assets/team/abhiram.jpg"
+import vamsiReddyImg from "../assets/team/vamsi_reddy.jpg"
+import bhaskarReddyImg from "../assets/team/bhaskar_reddy.jpg"
+import ayyannaImg from "../assets/team/ayyanna.jpg"
 import sarathChowdaryImg from "../assets/team/sarath_chowdary.jpg"
 
 export interface TeamMember {
@@ -12,7 +14,7 @@ export interface TeamMember {
   image: string
 }
 
-export const teamMembers: TeamMember[] = [
+const teamMembers: TeamMember[] = [
   {
     id: "bhanu-prakash",
     name: "Kapa Bhanu Prakash",
@@ -21,11 +23,25 @@ export const teamMembers: TeamMember[] = [
     image: bhanuPrakashImg,
   },
   {
-    id: "abhiram",
-    name: "Kapa Laxmi Abhinay",
+    id: "vamsi-reddy",
+    name: "Artipalli Vamsi Reddy",
     role: "Managing Director",
-    email: "AbhiKapa@gmail.com",
-    image: abhiramImg,
+    email: "Vamsireddy6525@gmail.com",
+    image: vamsiReddyImg,
+  },
+  {
+    id: "bhaskar-reddy",
+    name: "Bhaskar Reddy",
+    role: "Chief Operating Officer",
+    email: "Bhaskarreddy6064@gmail.com",
+    image: bhaskarReddyImg,
+  },
+  {
+    id: "ayyanna",
+    name: "Patchipala Ayyanna",
+    role: "Chief Business Officer",
+    email: "ayyannapatchipala@gmail.com",
+    image: ayyannaImg,
   },
   {
     id: "sarath-chowdary",

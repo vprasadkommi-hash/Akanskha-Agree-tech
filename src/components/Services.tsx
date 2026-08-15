@@ -4,7 +4,7 @@ import { Box, Typography, Stack, useTheme, useMediaQuery } from "@mui/material"
 import { RiArrowLeftCircleLine, RiArrowRightCircleLine } from "react-icons/ri"
 import { BiSolidLeaf } from "react-icons/bi"
 import useEmblaCarousel from "embla-carousel-react"
-import servicesBg from "../assets/services/servicesbg.png"
+import servicesBg from "../assets/services/servicesbg.webp"
 
 const serviceImages = import.meta.glob("../assets/services/*.png", { eager: true, import: "default" }) as Record<string, string>
 function img(filename: string): string {

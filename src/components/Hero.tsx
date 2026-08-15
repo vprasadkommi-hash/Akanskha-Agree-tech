@@ -12,7 +12,7 @@ const farmerAvatars = [
 ]
 
 export default function Hero() {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
   const isTe = i18n.language === "te"
 
   const handleScrollDown = () => {

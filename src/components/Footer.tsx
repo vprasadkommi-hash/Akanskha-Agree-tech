@@ -4,11 +4,11 @@ import { Mail, Languages } from "lucide-react"
 import logo from "../assets/logo.jpeg"
 
 const quickLinks = [
-  ["nav.home", "#home"],
-  ["nav.services", "#services"],
-  ["nav.howItWorks", "#how-it-works"],
-  ["nav.about", "#about"],
-  ["nav.contact", "#contact"],
+  ["nav.home", "/#home"],
+  ["nav.services", "/#services"],
+  ["nav.solutions", "/#solutions"],
+  ["nav.about", "/#vision"],
+  ["nav.contact", "/#contact"],
 ] as const
 
 const serviceLinks = [

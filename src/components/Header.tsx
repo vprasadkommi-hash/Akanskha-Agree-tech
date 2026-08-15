@@ -271,6 +271,7 @@ export default function Header() {
             {/* Mobile Menu Toggle */}
             <IconButton
               onClick={() => setMobileOpen(true)}
+              aria-label="Open navigation menu"
               sx={{
                 display: { xs: "flex", md: "none" },
                 color: "#ffffff",
@@ -307,6 +308,7 @@ export default function Header() {
             <Typography sx={{ fontWeight: 800, fontSize: "1.1rem" }}>Akanskha Agree Tech</Typography>
             <IconButton
               onClick={() => setMobileOpen(false)}
+              aria-label="Close navigation menu"
               sx={{
                 color: "#ffffff",
                 border: "1px solid rgba(255,255,255,0.2)",

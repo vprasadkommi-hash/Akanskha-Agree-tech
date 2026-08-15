@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Box, Typography, Stack } from "@mui/material"
 import { resources } from "../i18n"
-import visionBg from "../assets/visionbg.png"
+import visionBg from "../assets/visionbg.webp"
 
 const values = [
   { icon: "🌾", key: "farmerFirst" },

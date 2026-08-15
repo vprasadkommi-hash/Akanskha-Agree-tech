@@ -23,3 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Sensitive customer records and documents
+*_customer_details.*
+*customer_details*
+*.xlsx
+*.xls
+*.csv
+private/
+fixtures/

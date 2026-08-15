@@ -2,7 +2,6 @@ import { Box, Stack, Typography } from "@mui/material"
 import ContactDialogButton from "./ContactDialogButton"
 import type { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
-import { resources } from "../i18n"
 import { LuBrainCircuit } from "react-icons/lu"
 import { MdOutlinePhotoCamera } from "react-icons/md"
 import { IoShieldCheckmark } from "react-icons/io5"
@@ -15,11 +14,11 @@ import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded"
 import EmojiNatureRoundedIcon from "@mui/icons-material/EmojiNatureRounded"
 import { PiTreeThin } from "react-icons/pi"
 
-import heroRightBg from "../assets/aibg.png"
-import phoneImage from "../assets/handphone.png"
-import detectPanelBg from "../assets/detectbg.png"
-import decoLeafLeft from "../assets/leftleafoverlay.png"
-import decoLeafRight from "../assets/rightleafoverlay.png"
+import heroRightBg from "../assets/aibg.webp"
+import phoneImage from "../assets/handphone.webp"
+import detectPanelBg from "../assets/detectbg.webp"
+import decoLeafLeft from "../assets/leftleafoverlay.webp"
+import decoLeafRight from "../assets/rightleafoverlay.webp"
 
 type Step = { num: string; icon: ReactNode; key: "capture" | "analysis" | "diagnosis" | "treatment" }
 const steps: Step[] = [
@@ -30,37 +29,110 @@ const steps: Step[] = [
 ]
 
 export default function AICropDoctor() {
-  const { i18n } = useTranslation()
-  const lang = i18n.language === "te" ? "te" : "en"
-  const content = resources[lang].translation.aiCropDoctor
+  const { t } = useTranslation()
+
+  const getDetectionItems = (category: string, fallback: string[]): string[] => {
+    const res = t(`aiCropDoctor.detection.${category}.items`, { returnObjects: true })
+    return Array.isArray(res) ? (res as string[]) : fallback
+  }
 
   return (
     <Box id="ai-crop-doctor" sx={{ position: "relative", overflow: "hidden", bgcolor: "#ffffff" }}>
       <Box sx={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, #f6faf3 0%, #ffffff 60%)" }} />
-      <Box sx={{ position: "absolute", right: 0, top: 0, bottom: 0, width: { xs: "100%", md: "100%" }, backgroundImage: heroRightBg ? `url(${heroRightBg})` : "none", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", filter: heroRightBg ? "saturate(1)" : "none", opacity: heroRightBg ? 1 : 0.9 }} />
+      <Box
+        sx={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: { xs: "100%", md: "100%" },
+          backgroundImage: heroRightBg ? `url(${heroRightBg})` : "none",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: heroRightBg ? "saturate(1)" : "none",
+          opacity: heroRightBg ? 1 : 0.9,
+        }}
+      />
 
       <Box sx={{ position: "relative", zIndex: 1, maxWidth: 1280, mx: "auto", px: { xs: 2.5, sm: 4, md: 5 }, pt: { xs: 7, md: 9 } }}>
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1.45fr 1fr" }, columnGap: { xs: 0, md: 6 }, rowGap: 4, alignItems: "center" }}>
           <Box>
             <Stack spacing={2.2}>
-              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1, px: 1.4, py: 0.7, borderRadius: 999, bgcolor: "rgba(42,111,55,0.08)", border: "1px solid rgba(42,111,55,0.22)", boxShadow: "0 6px 16px rgba(42,111,55,0.08)",width:'250px' }}>
+              <Box
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 1,
+                  px: 1.4,
+                  py: 0.7,
+                  borderRadius: 999,
+                  bgcolor: "rgba(42,111,55,0.08)",
+                  border: "1px solid rgba(42,111,55,0.22)",
+                  boxShadow: "0 6px 16px rgba(42,111,55,0.08)",
+                  maxWidth: "fit-content",
+                }}
+              >
                 <Box sx={{ width: 4, height: 6, borderRadius: 999, bgcolor: "#2a6f37" }} />
                 <PiTreeThin style={{ color: "#2a6f37", fontSize: "1rem" }} />
-                <Typography sx={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#2a6f37" }}>{content.badge}</Typography>
+                <Typography sx={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#2a6f37" }}>
+                  {t("aiCropDoctor.badge", "AI Powered Crop Health")}
+                </Typography>
               </Box>
 
-              <Typography variant="h2" sx={{ fontWeight: 900, fontSize: { xs: "2rem", sm: "2.6rem", md: "3.2rem" }, lineHeight: 1.15, letterSpacing: { xs: "-0.8px", md: "-1.6px" }, color: "#122215" }}>
-                <Box component="span" sx={{ display: "block" }}>{content.heading.before}</Box>
-                <Box component="span">{content.heading.your} <Box component="span" sx={{ backgroundImage: "linear-gradient(90deg, #ff8400, #7bc24c)", backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent" }}>{content.heading.ai}</Box> {content.heading.after}</Box>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: 900,
+                  fontSize: { xs: "2rem", sm: "2.6rem", md: "3.2rem" },
+                  lineHeight: 1.15,
+                  letterSpacing: { xs: "-0.8px", md: "-1.6px" },
+                  color: "#122215",
+                }}
+              >
+                <Box component="span" sx={{ display: "block" }}>
+                  {t("aiCropDoctor.heading.before", "Meet Akanksha:")}
+                </Box>
+                <Box component="span">
+                  {t("aiCropDoctor.heading.your", "Your")}{" "}
+                  <Box
+                    component="span"
+                    sx={{
+                      backgroundImage: "linear-gradient(90deg, #ff8400, #7bc24c)",
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                      color: "transparent",
+                    }}
+                  >
+                    {t("aiCropDoctor.heading.ai", "AI")}
+                  </Box>{" "}
+                  {t("aiCropDoctor.heading.after", "Crop Doctor")}
+                </Box>
               </Typography>
 
               <Typography sx={{ color: "rgba(18,34,21,0.72)", fontSize: { xs: "0.95rem", md: "0.9rem" }, lineHeight: 1.7, maxWidth: 640 }}>
-                {content.subtitle}
+                {t("aiCropDoctor.subtitle", "Advanced computer vision powered by deep learning.")}
               </Typography>
 
               <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 4fr))", lg: "repeat(2, minmax(0, 1fr))" }, gap: { xs: 3, md: 1 } }}>
                 {steps.map((s) => (
-                <Box key={s.num} sx={{ position: "relative", minHeight: 205, pt: { xs: 3.8, md: 2.2 }, px: 2, pb: 2.4, borderRadius: 1, border: "1px solid rgba(18,34,21,0.09)", boxShadow: "0 8px 20px rgba(20,50,25,0.08)", bgcolor: "#ffffff", textAlign: "center", display: "flex", flexDirection: "column" }}>
+                  <Box
+                    key={s.num}
+                    sx={{
+                      position: "relative",
+                      minHeight: 205,
+                      pt: { xs: 3.8, md: 2.2 },
+                      px: 2,
+                      pb: 2.4,
+                      borderRadius: 1,
+                      border: "1px solid rgba(18,34,21,0.09)",
+                      boxShadow: "0 8px 20px rgba(20,50,25,0.08)",
+                      bgcolor: "#ffffff",
+                      textAlign: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     <Box sx={{ position: "absolute", top: 20, left: 16, display: { xs: "flex", md: "none" }, minWidth: 42, height: 40, px: 0.75, borderRadius: 1, alignItems: "center", justifyContent: "left", bgcolor: "rgba(123,194,76,0.13)", color: "#2a6f37", fontSize: "0.9rem", fontWeight: 800 }}>
                       {s.num}
                     </Box>
@@ -78,14 +150,13 @@ export default function AICropDoctor() {
                     </Box>
 
                     <Stack spacing={1.1} sx={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                      <Typography sx={{ fontWeight: 800, fontSize: "0.95rem", color: "#16241c", lineHeight: 1.2 }}>{content.steps[s.key].title}</Typography>
-                      <Typography sx={{ maxWidth: 195, fontSize: "0.76rem", color: "rgba(18,34,21,0.78)", lineHeight: 1.48 }}>{content.steps[s.key].desc}</Typography>
+                      <Typography sx={{ fontWeight: 800, fontSize: "0.95rem", color: "#16241c", lineHeight: 1.2 }}>
+                        {t(`aiCropDoctor.steps.${s.key}.title`)}
+                      </Typography>
+                      <Typography sx={{ maxWidth: 195, fontSize: "0.76rem", color: "rgba(18,34,21,0.78)", lineHeight: 1.48 }}>
+                        {t(`aiCropDoctor.steps.${s.key}.desc`)}
+                      </Typography>
                     </Stack>
-                    {/* {i < steps.length - 1 && (
-                      <Box sx={{ display: { xs: "none", md: "flex" }, position: "absolute", right: -14, top: "50%", transform: "translateY(-50%)", width: 28, height: 28, alignItems: "center", justifyContent: "center", color: "#ff8400", bgcolor: "#ffffff", borderRadius: "50%", boxShadow: "0 4px 10px rgba(0,0,0,0.06)", zIndex: 2 }}>
-                        <RiArrowRightCircleLine size={24} />
-                      </Box>
-                    )} */}
                   </Box>
                 ))}
               </Box>
@@ -93,11 +164,53 @@ export default function AICropDoctor() {
           </Box>
 
           <Box>
-            <Box sx={{ position: "relative", minHeight: { xs: "auto", md: 720 }, display: "flex", alignItems: "center", justifyContent: "center", }}>
+            <Box
+              sx={{
+                position: "relative",
+                minHeight: { xs: "auto", md: 720 },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: { xs: 2, md: 0 },
+              }}
+            >
               {phoneImage ? (
-                <Box component="img" src={phoneImage} alt={content.phoneAlt} sx={{ width: { xs: 0, md: 900 }, height: "auto", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.25))", borderRadius: 1, position: { xs: "absolute", md: "absolute" }, top: { xs: -700, md: 100 }, left: { xs: "40%", md: "auto" }, right: { xs: "auto", md: -200 }, transform: { xs: "translateX(0%)", md: "none" } }} />
+                <Box
+                  component="img"
+                  src={phoneImage}
+                  alt={t("aiCropDoctor.phoneAlt", "Phone scanning plant")}
+                  sx={{
+                    width: { xs: "100%", sm: 340, md: 900 },
+                    maxWidth: { xs: 280, sm: 340, md: "none" },
+                    height: "auto",
+                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.25))",
+                    borderRadius: 1,
+                    position: { xs: "relative", md: "absolute" },
+                    top: { xs: 0, md: 100 },
+                    left: { xs: "auto", md: "auto" },
+                    right: { xs: "auto", md: -200 },
+                    transform: "none",
+                    mx: "auto",
+                    display: "block",
+                  }}
+                />
               ) : (
-                <Box sx={{ width: { xs: 260, md: 320 }, height: { xs: 520, md: 700 }, borderRadius: 6, bgcolor: "rgba(20,60,30,0.06)", border: "2px dashed rgba(42,111,55,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(18,34,21,0.6)", fontWeight: 700 }}>{content.phonePlaceholder}</Box>
+                <Box
+                  sx={{
+                    width: { xs: 260, md: 320 },
+                    height: { xs: 520, md: 700 },
+                    borderRadius: 6,
+                    bgcolor: "rgba(20,60,30,0.06)",
+                    border: "2px dashed rgba(42,111,55,0.25)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "rgba(18,34,21,0.6)",
+                    fontWeight: 700,
+                  }}
+                >
+                  {t("aiCropDoctor.phonePlaceholder", "Phone image placeholder")}
+                </Box>
               )}
             </Box>
           </Box>
@@ -110,26 +223,27 @@ export default function AICropDoctor() {
           <Box sx={{ position: "relative" }}>
             <Stack direction="row" spacing={1} sx={{ alignItems: "center", justifyContent: "flex-start", mb: { xs: 1.5, md: 2 }, pl: { md: 1 } }}>
               <Box sx={{ width: 6, height: 6, bgcolor: "#2a6f37", transform: "rotate(45deg)" }} />
-              <Typography sx={{ fontWeight: 900, fontSize: { xs: "1.2rem", md: "1.5rem" }, color: "#16241c" }}>{content.detectTitle}</Typography>
+              <Typography sx={{ fontWeight: 900, fontSize: { xs: "1.2rem", md: "1.5rem" }, color: "#16241c" }}>
+                {t("aiCropDoctor.detectTitle", "What Akanksha Can Detect")}
+              </Typography>
               <Box sx={{ width: 6, height: 6, bgcolor: "#2a6f37", transform: "rotate(45deg)" }} />
             </Stack>
 
             <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }, gap: { xs: 1.5, md: 2 }, maxWidth: { md: "75%" } }}>
-              <DetectColumn icon={<GrassRoundedIcon />} {...content.detection.diseases} />
-              <DetectColumn icon={<BugReportRoundedIcon />} {...content.detection.pests} />
-              <DetectColumn icon={<OpacityRoundedIcon />} {...content.detection.nutrients} />
-              <DetectColumn icon={<EmojiNatureRoundedIcon />} {...content.detection.growth} />
-              <DetectColumn icon={<ScienceRoundedIcon />} {...content.detection.soil} />
-              <DetectColumn icon={<WarningAmberRoundedIcon />} {...content.detection.stress} />
+              <DetectColumn icon={<GrassRoundedIcon />} title={t("aiCropDoctor.detection.diseases.title", "Crop Diseases")} items={getDetectionItems("diseases", ["Leaf spots", "Mildew", "Blight", "Rust", "Yellowing"])} />
+              <DetectColumn icon={<BugReportRoundedIcon />} title={t("aiCropDoctor.detection.pests.title", "Pest Infestations")} items={getDetectionItems("pests", ["Locusts", "Armyworms", "Leaf folders", "Mites", "Whiteflies"])} />
+              <DetectColumn icon={<OpacityRoundedIcon />} title={t("aiCropDoctor.detection.nutrients.title", "Nutrient Deficiencies")} items={getDetectionItems("nutrients", ["Nitrogen (N)", "Phosphorus (P)", "Potassium (K)", "Magnesium", "Iron"])} />
+              <DetectColumn icon={<EmojiNatureRoundedIcon />} title={t("aiCropDoctor.detection.growth.title", "Growth Stages")} items={getDetectionItems("growth", ["Seedling", "Vegetative", "Flowering", "Fruiting", "Maturity"])} />
+              <DetectColumn icon={<ScienceRoundedIcon />} title={t("aiCropDoctor.detection.soil.title", "Soil Analysis")} items={getDetectionItems("soil", ["Moisture level", "Texture", "pH Indicator", "Compaction", "Drainage"])} />
+              <DetectColumn icon={<WarningAmberRoundedIcon />} title={t("aiCropDoctor.detection.stress.title", "Environmental Stress")} items={getDetectionItems("stress", ["Water stress", "Heat stress", "Cold damage", "Hail damage", "Sunburn"])} />
             </Box>
           </Box>
         </Box>
 
         <Stack spacing={1} sx={{ alignItems: "center", mt: { xs: 3, md: 4 } }}>
           <ContactDialogButton variant="contained" color="success" size="large" sx={{ px: { xs: 3, md: 5 }, py: { xs: 1.2, md: 1.4 }, borderRadius: 999, textTransform: "none", fontWeight: 800, fontSize: { xs: "0.95rem", md: "1.05rem" }, backgroundImage: "linear-gradient(90deg, #2a6f37, #7bc24c)", boxShadow: "0 12px 28px rgba(64,140,60,0.3)" }}>
-            {content.requestDemo}
+            {t("aiCropDoctor.requestDemo", "Request Akanksha AI Demo")}
           </ContactDialogButton>
-          {/* <Chip icon={<CheckCircleRoundedIcon />} label="AI-Powered. Farmer Approved." sx={{ bgcolor: "rgba(123,194,76,0.18)", border: "1px solid rgba(123,194,76,0.38)", color: "#2a6f37", fontWeight: 700 }} /> */}
         </Stack>
       </Box>
 

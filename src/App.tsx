@@ -15,6 +15,7 @@ import ContactSection from "./components/ContactSection"
 import AICropDoctor from "./components/AICropDoctor"
 import GovtSchemes from "./components/GovtSchemes"
 import Roadmap from "./pages/Roadmap"
+import NotFound from "./pages/NotFound"
 import TeamMembers from "./components/TeamMembers"
 import Footer from "./components/Footer"
 import ScrollToTop from "./components/ScrollToTop"
@@ -44,6 +45,7 @@ function App() {
           }
         />
         <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ScrollToTop />

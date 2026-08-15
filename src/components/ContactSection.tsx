@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { Leaf, Phone, Mail, MapPin, Sprout, Smartphone, Users } from "lucide-react"
-import handphone from "../assets/handphone.png"
+import handphone from "../assets/handphone.webp"
 
 interface ContactSectionProps {
   inDialog?: boolean
