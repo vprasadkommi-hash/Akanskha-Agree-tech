@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: "vamsi-reddy",
-    name: "Artipalli Vamsi Reddy",
+    name: "Aratipalli Vamsi Reddy",
     role: "Managing Director",
     email: "Vamsireddy6525@gmail.com",
     image: vamsiReddyImg,

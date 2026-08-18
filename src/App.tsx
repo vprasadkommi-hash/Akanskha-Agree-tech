@@ -19,11 +19,13 @@ import NotFound from "./pages/NotFound"
 import TeamMembers from "./components/TeamMembers"
 import Footer from "./components/Footer"
 import ScrollToTop from "./components/ScrollToTop"
+import ComingSoonPopup from "./components/ComingSoonPopup"
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <ComingSoonPopup />
       <Header />
       <Routes>
         <Route
