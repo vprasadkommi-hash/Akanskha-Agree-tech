@@ -58,7 +58,7 @@ export default function Header() {
     { labelKey: "nav.roadmap", href: "/roadmap", fallback: "Roadmap" },
     {
       labelKey: "nav.register",
-      href: "https://venkat5923.github.io/akanksha-agree-tech/",
+      href: "https://akanksha-agree-tech.vercel.app",
       fallback: "Register",
       isExternal: true,
     },
