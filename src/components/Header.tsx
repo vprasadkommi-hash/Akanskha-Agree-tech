@@ -58,8 +58,9 @@ export default function Header() {
     { labelKey: "nav.roadmap", href: "/roadmap", fallback: "Roadmap" },
     {
       labelKey: "nav.register",
-      href: "/register",
+      href: "https://www.akankshaagreetech.in/",
       fallback: "Register",
+      isExternal: true,
     },
   ]
 
