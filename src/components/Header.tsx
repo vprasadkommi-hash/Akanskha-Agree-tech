@@ -58,9 +58,8 @@ export default function Header() {
     { labelKey: "nav.roadmap", href: "/roadmap", fallback: "Roadmap" },
     {
       labelKey: "nav.register",
-      href: "https://venkat5923.github.io/akanksha-agree-tech/",
+      href: "/register",
       fallback: "Register",
-      isExternal: true,
     },
   ]
 
@@ -323,26 +322,53 @@ export default function Header() {
           <Stack component="nav" spacing={1}>
             {navLinks.map((item) => {
               const active = getActive(item.href)
-              return (
+              const isAnchor = item.href.startsWith("/#") || item.href.startsWith("#")
+              const buttonSx = {
+                justifyContent: "flex-start",
+                px: 2,
+                py: 1.1,
+                borderRadius: "12px",
+                color: active ? "#22c55e" : "rgba(255,255,255,0.85)",
+                bgcolor: active ? "rgba(34,197,94,0.12)" : "transparent",
+                fontSize: "0.95rem",
+                fontWeight: active ? 700 : 500,
+                textTransform: "none",
+                "&:hover": { bgcolor: "rgba(255,255,255,0.08)", color: "#ffffff" },
+              }
+
+              if (item.isExternal) {
+                return (
+                  <Button
+                    key={item.labelKey}
+                    component="a"
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    sx={buttonSx}
+                  >
+                    {t(item.labelKey, item.fallback)}
+                  </Button>
+                )
+              }
+
+              return isAnchor ? (
                 <Button
                   key={item.labelKey}
                   component="a"
                   href={item.href}
-                  target={item.isExternal ? "_blank" : undefined}
-                  rel={item.isExternal ? "noopener noreferrer" : undefined}
                   onClick={() => setMobileOpen(false)}
-                  sx={{
-                    justifyContent: "flex-start",
-                    px: 2,
-                    py: 1.1,
-                    borderRadius: "12px",
-                    color: active ? "#22c55e" : "rgba(255,255,255,0.85)",
-                    bgcolor: active ? "rgba(34,197,94,0.12)" : "transparent",
-                    fontSize: "0.95rem",
-                    fontWeight: active ? 700 : 500,
-                    textTransform: "none",
-                    "&:hover": { bgcolor: "rgba(255,255,255,0.08)", color: "#ffffff" },
-                  }}
+                  sx={buttonSx}
+                >
+                  {t(item.labelKey, item.fallback)}
+                </Button>
+              ) : (
+                <Button
+                  key={item.labelKey}
+                  component={RouterLink}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  sx={buttonSx}
                 >
                   {t(item.labelKey, item.fallback)}
                 </Button>
