@@ -15,6 +15,7 @@ import ContactSection from "./components/ContactSection"
 import AICropDoctor from "./components/AICropDoctor"
 import GovtSchemes from "./components/GovtSchemes"
 import Roadmap from "./pages/Roadmap"
+import Register from "./pages/Register"
 import NotFound from "./pages/NotFound"
 import TeamMembers from "./components/TeamMembers"
 import Footer from "./components/Footer"
@@ -47,6 +48,7 @@ function App() {
           }
         />
         <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
