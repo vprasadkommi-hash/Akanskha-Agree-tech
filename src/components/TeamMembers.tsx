@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
   {
     id: "sarath-chowdary",
     name: "Kapa Sarath Chowdary",
-    role: "HR",
+    role: "Manager",
     email: "sarathkapa@gmail.com",
     image: sarathChowdaryImg,
   },

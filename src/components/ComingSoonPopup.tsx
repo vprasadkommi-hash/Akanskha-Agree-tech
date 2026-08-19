@@ -20,6 +20,7 @@ import {
   CalendarCheck2,
 } from "lucide-react"
 import logo from "../assets/logo.jpeg"
+import GlitchCharReveal from "./GlitchCharReveal"
 
 interface ComingSoonPopupProps {
   initialOpen?: boolean
@@ -287,38 +288,62 @@ export default function ComingSoonPopup({
             textAlign="center"
             sx={{ position: "relative", zIndex: 2 }}
           >
-            {/* Brand Logo & Subtle Ring */}
-            <Box sx={{ position: "relative" }}>
-              <Box
+            {/* Brand Logo & Company Name */}
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={1.5}
+            >
+              <Box sx={{ position: "relative", display: "inline-flex" }}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    inset: -3,
+                    borderRadius: "50%",
+                    background:
+                      "radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%)",
+                    animation: "pulseRing 3s infinite ease-in-out",
+                    "@keyframes pulseRing": {
+                      "0%, 100%": { transform: "scale(1)", opacity: 0.5 },
+                      "50%": { transform: "scale(1.12)", opacity: 0.85 },
+                    },
+                  }}
+                />
+                <Box
+                  component="img"
+                  src={logo}
+                  alt="Akanksha Agree Tech"
+                  sx={{
+                    width: { xs: 44, sm: 52 },
+                    height: { xs: 44, sm: 52 },
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    border: "2px solid rgba(255, 255, 255, 0.35)",
+                    boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                />
+              </Box>
+
+              <Typography
                 sx={{
-                  position: "absolute",
-                  inset: -3,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%)",
-                  animation: "pulseRing 3s infinite ease-in-out",
-                  "@keyframes pulseRing": {
-                    "0%, 100%": { transform: "scale(1)", opacity: 0.5 },
-                    "50%": { transform: "scale(1.12)", opacity: 0.85 },
-                  },
+                  fontWeight: 800,
+                  fontSize: { xs: "1.05rem", sm: "1.25rem" },
+                  color: "#ffffff",
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.2,
+                  textAlign: "left",
+                  textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
                 }}
-              />
-              <Box
-                component="img"
-                src={logo}
-                alt="Akanksha Agree Tech"
-                sx={{
-                  width: { xs: 46, sm: 54 },
-                  height: { xs: 46, sm: 54 },
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: "2px solid rgba(255, 255, 255, 0.35)",
-                  boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)",
-                  position: "relative",
-                  zIndex: 2,
-                }}
-              />
-            </Box>
+              >
+                {isTelugu
+                  ? "ఆకాంక్ష అగ్రీ టెక్ ప్రై. లిమిటెడ్"
+                  : "Akanksha Agree Tech Pvt. Ltd."}
+              </Typography>
+            </Stack>
 
             {/* Live Status Chip */}
             <Chip
@@ -362,24 +387,49 @@ export default function ComingSoonPopup({
               }}
             />
 
-            {/* Typography Header: Coming Soon */}
-            <Box>
-              <Typography
-                variant="h2"
-                component="h1"
-                sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: "1.6rem", sm: "2.1rem" },
+            {/* Typography Header: Coming Soon with Glitch / Scramble Text Animation */}
+            <Box sx={{ width: "100%", my: 0.3, display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <GlitchCharReveal
+                words={isTelugu ? "త్వరలో ప్రారంభం" : "Coming Soon"}
+                color="#ffffff"
+                tag="h1"
+                font={{
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  letterSpacing: "-0.025em",
-                  lineHeight: 1.15,
-                  mb: 0.5,
-                  color: "#ffffff",
-                  textShadow: "0 2px 14px rgba(0, 0, 0, 0.6)",
+                  fontSize: "clamp(1.75rem, 5vw, 2.25rem)",
+                  fontWeight: 800,
+                  lineHeight: "1.15em",
+                  letterSpacing: "0.02em",
+                  textAlign: "center",
                 }}
-              >
-                {isTelugu ? "త్వరలో ప్రారంభం" : "Coming Soon"}
-              </Typography>
+                enterAnimation={{
+                  mode: "oneLine",
+                  restState: "solid",
+                  replay: true,
+                  position: "above",
+                  scrambleIntensity: 85,
+                  ease: { type: "tween", duration: 1.8, ease: "easeOut" },
+                  flickerEnabled: true,
+                  flickerColor: "#4ade80",
+                  flickerIntensity: 70,
+                  flickerSpeed: 12,
+                }}
+                hoverAnimation={{
+                  type: "wave",
+                  lines: "oneLine",
+                  radius: 2,
+                  collapse: false,
+                  collapseTime: 1,
+                  glitchChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*",
+                  glitchShuffle: true,
+                  flickerEnabled: true,
+                  flickerColor: "#4ade80",
+                  flickerIntensity: 60,
+                  flickerSpeed: 12,
+                  waveEase: { type: "tween", duration: 1.2, ease: "linear" },
+                  waveShuffleLimitEnabled: false,
+                  waveShuffleLimitValue: 10,
+                }}
+              />
 
               <Typography
                 variant="body2"
@@ -389,6 +439,7 @@ export default function ComingSoonPopup({
                   lineHeight: 1.4,
                   maxWidth: 380,
                   mx: "auto",
+                  mt: 0.8,
                   textShadow: "0 1px 8px rgba(0, 0, 0, 0.5)",
                 }}
               >
