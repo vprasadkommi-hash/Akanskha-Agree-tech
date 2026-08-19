@@ -246,7 +246,7 @@ function SolutionCard({ solution, t }: { solution: (typeof solutions)[number]; t
     <Box sx={{ position: "relative", height: { xs: 360, sm: 330, md: 300 }, overflow: "hidden", border: "1px solid rgba(255, 123, 0, 0.39)", borderRadius: "18px", bgcolor: "transparent", boxShadow: "0 16px 40px rgba(0,0,0,0.2)", transition: "transform 240ms ease, border-color 240ms ease", "&:hover": { transform: "translateY(0px)", borderColor: "rgba(172,218,133,0.55)" } }}>
       <Box className="ag-problems__parallax" sx={{ position: "absolute", zIndex: 0, bottom: 0, left: 0, right: 0, overflow: "hidden", height: { xs: 365, sm: 365, md: 305 }, borderRadius: "18px" }}>
         <Box className="ag-problems__parallax__layer" sx={{ position: "relative", height: "100%", width: "120%", display: "flex", justifyContent: "center" }}>
-          <Box component="img" className="ag-problems__parallax__img" src={solution.image} alt="" sx={{ maxWidth: "none", flex: "0 0 calc(100% + (var(--slide-spacing, 6px) * 3))", height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(1.05) contrast(1.08) brightness(1.05)", opacity: 1 }} />
+          <Box component="img" className="ag-problems__parallax__img" src={solution.image} alt="" loading="lazy" decoding="async" sx={{ maxWidth: "none", flex: "0 0 calc(100% + (var(--slide-spacing, 6px) * 3))", height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(1.05) contrast(1.08) brightness(1.05)", opacity: 1 }} />
         </Box>
       </Box>
       <Box sx={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.85) 100%)" }} />

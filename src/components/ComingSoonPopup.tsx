@@ -19,24 +19,28 @@ import {
   Languages,
   CalendarCheck2,
 } from "lucide-react"
-import logo from "../assets/logo.jpeg"
+import popupLogo from "../assets/popup-logo.jpg"
 import GlitchCharReveal from "./GlitchCharReveal"
 
 interface ComingSoonPopupProps {
   initialOpen?: boolean
+  isOpen?: boolean
   onClose?: () => void
 }
 
 export default function ComingSoonPopup({
   initialOpen = true,
+  isOpen,
   onClose,
 }: ComingSoonPopupProps) {
   const { i18n } = useTranslation()
-  const [open, setOpen] = useState(initialOpen)
+  const [internalOpen, setInternalOpen] = useState(initialOpen)
+  const isControlled = isOpen !== undefined
+  const open = isControlled ? isOpen : internalOpen
   const isTelugu = i18n.language === "te"
 
   const handleClose = () => {
-    setOpen(false)
+    setInternalOpen(false)
     if (onClose) {
       onClose()
     }
@@ -312,13 +316,14 @@ export default function ComingSoonPopup({
                 />
                 <Box
                   component="img"
-                  src={logo}
-                  alt="Akanksha Agree Tech"
+                  src={popupLogo}
+                  alt="AgreeConnect"
                   sx={{
                     width: { xs: 44, sm: 52 },
                     height: { xs: 44, sm: 52 },
                     borderRadius: "50%",
                     objectFit: "cover",
+                    bgcolor: "#ffffff",
                     border: "2px solid rgba(255, 255, 255, 0.35)",
                     boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)",
                     position: "relative",
@@ -340,8 +345,8 @@ export default function ComingSoonPopup({
                 }}
               >
                 {isTelugu
-                  ? "ఆకాంక్ష అగ్రీ టెక్ ప్రై. లిమిటెడ్"
-                  : "Akanksha Agree Tech Pvt. Ltd."}
+                  ? "అగ్రీకనెక్ట్"
+                  : "AgreeConnect"}
               </Typography>
             </Stack>
 
@@ -594,7 +599,7 @@ export default function ComingSoonPopup({
                   letterSpacing: "0.02em",
                 }}
               >
-                Akanksha Agree Tech • Transforming Agriculture
+                AgreeConnect • Transforming Agriculture
               </Typography>
             </Stack>
           </Stack>
