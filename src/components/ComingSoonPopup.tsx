@@ -20,7 +20,6 @@ import {
   CalendarCheck2,
 } from "lucide-react"
 import popupLogo from "../assets/popup-logo.jpg"
-import GlitchCharReveal from "./GlitchCharReveal"
 
 interface ComingSoonPopupProps {
   initialOpen?: boolean
@@ -392,13 +391,12 @@ export default function ComingSoonPopup({
               }}
             />
 
-            {/* Typography Header: Coming Soon with Glitch / Scramble Text Animation */}
+            {/* Typography Header: Plain Bold Coming Soon */}
             <Box sx={{ width: "100%", my: 0.3, display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <GlitchCharReveal
-                words={isTelugu ? "త్వరలో ప్రారంభం" : "Coming Soon"}
-                color="#ffffff"
-                tag="h1"
-                font={{
+              <Typography
+                component="h1"
+                sx={{
+                  color: "#ffffff",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontSize: "clamp(1.75rem, 5vw, 2.25rem)",
                   fontWeight: 800,
@@ -406,35 +404,9 @@ export default function ComingSoonPopup({
                   letterSpacing: "0.02em",
                   textAlign: "center",
                 }}
-                enterAnimation={{
-                  mode: "oneLine",
-                  restState: "solid",
-                  replay: true,
-                  position: "above",
-                  scrambleIntensity: 85,
-                  ease: { type: "tween", duration: 1.8, ease: "easeOut" },
-                  flickerEnabled: true,
-                  flickerColor: "#4ade80",
-                  flickerIntensity: 70,
-                  flickerSpeed: 12,
-                }}
-                hoverAnimation={{
-                  type: "wave",
-                  lines: "oneLine",
-                  radius: 2,
-                  collapse: false,
-                  collapseTime: 1,
-                  glitchChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*",
-                  glitchShuffle: true,
-                  flickerEnabled: true,
-                  flickerColor: "#4ade80",
-                  flickerIntensity: 60,
-                  flickerSpeed: 12,
-                  waveEase: { type: "tween", duration: 1.2, ease: "linear" },
-                  waveShuffleLimitEnabled: false,
-                  waveShuffleLimitValue: 10,
-                }}
-              />
+              >
+                {isTelugu ? "త్వరలో ప్రారంభం" : "Coming Soon"}
+              </Typography>
 
               <Typography
                 variant="body2"
