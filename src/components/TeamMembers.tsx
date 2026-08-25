@@ -95,16 +95,16 @@ export default function TeamMembers() {
           <Grid size={{ xs: 12, md: 4.5, lg: 4 }}>
             <Stack
               alignItems="center"
-              spacing={3}
+              spacing={2.5}
               sx={{
-                p: { xs: 4, md: 4.5 },
+                p: { xs: 2.5, md: 3 },
                 height: "100%",
                 borderRadius: 4,
                 bgcolor: "rgba(255, 255, 255, 0.03)",
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 backdropFilter: "blur(12px)",
                 transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 position: "relative",
                 overflow: "hidden",
                 "&:hover": {
@@ -115,17 +115,18 @@ export default function TeamMembers() {
                 },
               }}
             >
-              {/* Spherical Shape Image Container */}
+              {/* Rectangle Image Container with Rounded Edges - Extended Vertically */}
               <Box
                 sx={{
-                  width: { xs: 160, md: 190 },
-                  height: { xs: 160, md: 190 },
-                  borderRadius: "50%",
-                  p: "6px",
+                  width: "100%",
+                  flex: 1,
+                  minHeight: { xs: 340, sm: 380, md: 430 },
+                  borderRadius: 3,
+                  p: "3px",
                   background: "linear-gradient(135deg, #4ade80, #16a34a, rgba(255,255,255,0.2))",
                   boxShadow: "0 10px 30px rgba(34, 197, 94, 0.35)",
                   display: "flex",
-                  flexShrink: 0,
+                  overflow: "hidden",
                 }}
               >
                 <Box
@@ -135,8 +136,9 @@ export default function TeamMembers() {
                   sx={{
                     width: "100%",
                     height: "100%",
-                    borderRadius: "50%",
+                    borderRadius: "10px",
                     objectFit: "cover",
+                    objectPosition: "top center",
                     bgcolor: "#122a16",
                     display: "block",
                   }}
