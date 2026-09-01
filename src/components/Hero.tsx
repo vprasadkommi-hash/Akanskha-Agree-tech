@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next"
 import { Box, Typography, Stack, Button } from "@mui/material"
-import ContactDialogButton from "./ContactDialogButton"
 import { ArrowUpRight, ChevronDown, Star } from "lucide-react"
 import wheatBg from "../assets/wheat-hero-bg.jpg"
 import heroVideo from "../assets/farm-hero.mp4"
@@ -194,7 +193,11 @@ export default function Hero() {
             sx={{ alignItems: { xs: "stretch", sm: "center" } }}
           >
             {/* Primary Action Button (Lime Pill) */}
-            <ContactDialogButton
+            <Button
+              component="a"
+              href="https://www.akankshaagreetech.in/"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="contained"
               endIcon={<ArrowUpRight size={18} strokeWidth={2.4} />}
               sx={{
@@ -216,7 +219,7 @@ export default function Hero() {
               }}
             >
               {isTe ? "వ్యవసాయం ప్రారంభించండి" : "Start Farming"}
-            </ContactDialogButton>
+            </Button>
 
             {/* Secondary Action Button (Frosted Glass Pill) */}
             <Button
