@@ -1,14 +1,8 @@
 import { useTranslation } from "react-i18next"
 import { Box, Typography, Stack, Button } from "@mui/material"
-import { ArrowUpRight, ChevronDown, Star } from "lucide-react"
+import { ArrowUpRight, ChevronDown } from "lucide-react"
 import wheatBg from "../assets/wheat-hero-bg.jpg"
 import heroVideo from "../assets/farm-hero.mp4"
-
-const farmerAvatars = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
-]
 
 export default function Hero() {
   const { i18n } = useTranslation()
@@ -297,69 +291,6 @@ export default function Hero() {
               SCROLL
             </Typography>
             <ChevronDown size={16} strokeWidth={2.4} />
-          </Stack>
-
-          {/* Bottom-right: Rating & Trust Badge */}
-          <Stack
-            direction="row"
-            spacing={1.4}
-            sx={{
-              alignItems: "center",
-              bgcolor: "rgba(10, 24, 13, 0.6)",
-              backdropFilter: "blur(16px)",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              borderRadius: "999px",
-              px: { xs: 1.8, sm: 2.2 },
-              py: 0.9,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
-            }}
-          >
-            {/* Star Rating */}
-            <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
-              <Star size={15} fill="#facc15" color="#facc15" />
-              <Typography
-                sx={{
-                  color: "#ffffff",
-                  fontWeight: 700,
-                  fontSize: "0.86rem",
-                  lineHeight: 1,
-                }}
-              >
-                4.9
-              </Typography>
-            </Stack>
-
-            {/* Overlapping Avatars */}
-            <Stack direction="row" sx={{ alignItems: "center", ml: 0.5 }}>
-              {farmerAvatars.map((url, i) => (
-                <Box
-                  key={i}
-                  component="img"
-                  src={url}
-                  alt="Farmer"
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: "50%",
-                    border: "2px solid #0d2611",
-                    ml: i === 0 ? 0 : "-8px",
-                    objectFit: "cover",
-                  }}
-                />
-              ))}
-            </Stack>
-
-            {/* Label */}
-            <Typography
-              sx={{
-                color: "rgba(255, 255, 255, 0.85)",
-                fontSize: { xs: "0.74rem", sm: "0.8rem" },
-                fontWeight: 600,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              12k+ Farmers
-            </Typography>
           </Stack>
         </Stack>
       </Box>
